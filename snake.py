@@ -12,7 +12,7 @@ class Node:
     def __init__(self,master,size):
         self.canvas=master
         self.size=size
-        self.x,self.y=5,8 #to DO: random selection
+        self.x,self.y=random.randint(1, 15), random.randint(1, 15)  #random selection
         self.space=3
         self.x_dir,self.y_dir=0,0
         self.x_coordinate1, self.y_coordinate1 = self.x * self.size + self.space - self.size, self.y * self.size + self.space - self.size
@@ -127,11 +127,11 @@ def main():
             n=1
             for rect in body:
                 x,y = snake.giveCoordinates(n)
-                print(x,y)
                 rect.draw1(x,y)
-                if head.__getattribute__('x') == rect.__getattribute__('x') and head.__getattribute__('y') == rect.__getattribute__('y'):
-                    game=False
+                if head.__getattribute__('x') == x and head.__getattribute__( 'y') == y:
+                    game = False
                 n+=1
+
         time.sleep(0.15)
         root.update()
     w = Label(root, text="GAME OVER!").pack()
